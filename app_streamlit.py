@@ -39,7 +39,7 @@ def ask_question(store_name: str, history: list[types.Content]) -> str:
     for attempt in range(1, max_retries + 1):
         try:
             response = client.models.generate_content(
-                model="gemini-3-pro-preview", #"gemini-2.5-flash",
+                model="gemini-2.5-flash",
                 contents=history,
                 config=types.GenerateContentConfig(
                     tools=[
