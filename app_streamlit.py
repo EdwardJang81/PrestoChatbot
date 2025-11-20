@@ -113,7 +113,6 @@ store_options = {
     "[기술]제품": "presto_products",
     "[기술]어플리케이션": "presto_applications",
     "[기술]프로그래밍": "presto_programmings",
-    "[회사]사내규정": "presto_regulations",
 }
 
 selected_label = st.sidebar.selectbox(
