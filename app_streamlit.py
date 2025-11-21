@@ -138,7 +138,6 @@ store = get_store(store_display_name)
 model_name = st.sidebar.selectbox(
     "🧠 Gemini 모델 선택",
     options=[
-        "gemini-2.5-flash",        # 기본값 (빠른 응답)
         "gemini-2.5-pro",          # 정확도/추론력 우선
         "gemini-3-pro-preview",    # 최신 미리보기
     ],
