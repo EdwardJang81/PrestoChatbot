@@ -122,14 +122,13 @@ store_options = {
     "[기술]제품": "presto_products",
     "[기술]어플리케이션": "presto_applications",
     "[기술]프로그래밍": "presto_programmings",
-    "[회사]사내규정": "presto_regulations",
+    #"[회사]사내규정": "presto_regulations",
 }
 
 selected_label = st.sidebar.selectbox(
     "📂 Documentation Store 선택",
     options=list(store_options.keys()),
     index=0,
-    disabled=True,
 )
 
 store_display_name = store_options[selected_label]
@@ -144,7 +143,6 @@ model_name = st.sidebar.selectbox(
         "gemini-3-pro-preview",    # 최신 미리보기
     ],
     index=0,
-    disabled=True,
 )
 
 # 3) 선택된 Store 안의 파일 리스트 표시
