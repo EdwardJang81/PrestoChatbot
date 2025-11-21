@@ -62,6 +62,15 @@ def ask_question(
                 model=model_name,
                 contents=history,
                 config=types.GenerateContentConfig(
+                    system_instruction=(
+                        "당신은 제공된 문서를 기반으로 답변하는 AI 어시스턴트입니다.\n"
+                        "다음 규칙을 반드시 준수하세요:\n"
+                        "1. 오직 제공된 문서(Context)에 있는 내용만 사용하여 답변하세요.\n"
+                        "2. 문서에 없는 내용은 '문서에 해당 내용이 없습니다'라고 답변하고, 외부 지식을 사용하지 마세요.\n"
+                        "3. 답변의 끝에는 반드시 참고한 문서의 이름(Source)을 명시하세요.\n"
+                        "   예시: (출처: 파일명.pdf)\n"
+                        "4. 답변은 반드시 한국어로 작성하세요."
+                    ),
                     tools=[
                         types.Tool(
                             file_search=types.FileSearch(
@@ -113,12 +122,14 @@ store_options = {
     "[기술]제품": "presto_products",
     "[기술]어플리케이션": "presto_applications",
     "[기술]프로그래밍": "presto_programmings",
+    "[회사]사내규정": "presto_regulations",
 }
 
 selected_label = st.sidebar.selectbox(
     "📂 Documentation Store 선택",
     options=list(store_options.keys()),
     index=0,
+    disabled=True,
 )
 
 store_display_name = store_options[selected_label]
@@ -133,6 +144,7 @@ model_name = st.sidebar.selectbox(
         "gemini-3-pro-preview",    # 최신 미리보기
     ],
     index=0,
+    disabled=True,
 )
 
 # 3) 선택된 Store 안의 파일 리스트 표시
